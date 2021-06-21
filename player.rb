@@ -1,6 +1,11 @@
+require './question'
+
 class Player
-  def initialize(number)
-    @number = number
+  attr_reader :name
+  attr_reader :lives
+
+  def initialize(name)
+    @name = name
     @lives = 3
   end
 
@@ -8,7 +13,21 @@ class Player
     @lives -= 1    
   end
 
-  def lose_game
-    @lives = 0
+  def show_live
+    "#{@lives}/3"
+  end
+
+  def question
+    question = Question.new
+    print "#{@name}: "
+    question.generate_question
+    print '> '
+    input = gets.chomp
+    if question.result?(input)
+      puts 'Yes! You are correct.'
+    else
+      puts 'Seriously? No!'
+      lose_life
+    end
   end
 end

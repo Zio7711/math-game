@@ -1,15 +1,17 @@
 class Question
-  def initialize(num1, num2)
-    @num1 = num1
-    @num2 = num2
-    @sum = @num1 + @num2
+  def initialize
+    @num_1 = rand(1...20)
+    @num_2 = rand(1...20)
+    @sum = @num_1 + @num_2
   end
 
   def generate_question
-    puts "#{@name:} What does #{@num1} plus #{@num2} equal?"
+    puts "What does #{@num_1} plus #{@num_2} equal?"
   end
 
+
+
   def result?(input)
-    @sum == input
+    @sum == input.to_i
   end
 end
